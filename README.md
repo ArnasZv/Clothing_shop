@@ -162,6 +162,7 @@ python manage.py runserver
 ```
 
 Access locally at: **http://127.0.0.1:8000**
+Access Render at: **https://clothing-shop-06eh.onrender.com**
 
 ---
 
@@ -171,7 +172,8 @@ Access locally at: **http://127.0.0.1:8000**
 3. Build Command: `pip install -r requirements.txt`  
 4. Start Command: `gunicorn clothing_shop.wsgi`  
 5. Add environment variables (`SECRET_KEY`, `DATABASE_URL`, `DEBUG=False`).  
-6. Deploy and verify.
+6. Deploy and verify. 
+
 
 ---
 
@@ -192,5 +194,5 @@ Access locally at: **http://127.0.0.1:8000**
 
 ---
 
-## 🏁 Conclusion
-This project illustrates comprehensive understanding and practical application of the **Django framework** and modern web technologies. It meets the Frameworks Assessment’s highest-level (Distinction) criteria by implementing robust backend logic, a relational database schema, a secure authentication system, and an interactive frontend, all within a modular, deployable architecture.
+##  Conclusion
+This project illustrates comprehensive understanding and practical application of the **Django framework** and modern web technologies. I believe this meets the Frameworks Assessment’s highest-level criteria by implementing robust backend logic, a relational database schema, a secure authentication system, and an interactive frontend, all within a modular, deployable architecture.
