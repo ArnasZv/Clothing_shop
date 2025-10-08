@@ -27,7 +27,11 @@ SECRET_KEY = os.getenv("290519", "290519")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split()
+ALLOWED_HOSTS = os.getenv(
+    '127.0.0.1',
+    'localhost',
+    'clothing-shop-06eh.onrender.com',
+).split()
 
 
 # Application definition
