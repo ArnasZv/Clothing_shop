@@ -1,0 +1,143 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid py-4"   style=" height: 100%">
+  <div class="row g-3 ">
+
+    <!-- Sidebar Filters --> 
+    <div class="col-md-3" style="height:auto; border: solid 2px black; border-radius: 20px; background-color: rgb(109, 121, 96);">
+      <div class="position-sticky " style="top: 20px;">
+        <h5 class="mb-3 fw-bold">Filters</h5>
+        <form method="get">
+          <!-- Category Dropdown -->
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select id="category" name="category" class="form-select">
+              <option value="">All Categories</option>
+              {% for category in categories %}
+                <option value="{{ category.slug }}" {% if request.GET.category == category.slug %}selected{% endif %}>
+                  {{ category.name }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <!-- Price Range Dropdown -->
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <select id="price" name="price" class="form-select">
+              <option value="">All Prices</option>
+              <option value="0-50" {% if request.GET.price == '0-50' %}selected{% endif %}>Under €50</option>
+              <option value="50-100" {% if request.GET.price == '50-100' %}selected{% endif %}>€50 - €100</option>
+              <option value="100-200" {% if request.GET.price == '100-200' %}selected{% endif %}>€100 - €200</option>
+              <option value="200+" {% if request.GET.price == '200+' %}selected{% endif %}>Over €200</option>
+            </select>
+          </div>
+
+          <!-- Search Box -->
+          <div class="mb-3">
+            <label for="q" class="form-label">Search</label>
+            <input type="text" id="q" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Search products...">
+          </div>
+
+          <!-- Filter Button -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-funnel"></i> Apply Filters
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="col-md-9">
+      <h2 class="text-center mb-4 fw-bold text-decoration-underline">Our Products</h2>
+      <div class="row g-3 justify-content-center align-items-center">
+        {% for product in products %}
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-lg border-2 product-card" style="background-color: rgba(128, 128, 128, 0.24);">
+              {% if product.image %}
+                <div id="carousel-{{ product.id }}" class="carousel slide">
+  <div class="carousel-inner">
+    {% if product.image %}
+      <div class="carousel-item active">
+        <img src="{{ product.image.url }}" class="d-block w-200 img-fluid" alt="{{ product.name }}">
+      </div>
+    {% endif %}
+    {% for img in product.images.all %}
+      <div class="carousel-item {% if not product.image and forloop.first %}active{% endif %}">
+        <img src="{{ img.image.url }}" class="d-block w-200 img-fluid" alt="{{ product.name }}">
+      </div>
+             {% endfor %}
+           </div>
+
+             {% if product.images.all %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{ product.id }}" data-bs-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{ product.id }}" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </button>
+                {% endif %}
+              </div>
+              {% else %}
+                <img src="{% static 'shop/images/no_image.png' %}" class="card-img-top" alt="No image available">
+              {% endif %}
+
+              {% if product.inventory == 0 %}
+                <div class="position-absolute top-50 start-50 translate-middle bg-dark bg-opacity-75 text-white fw-bold px-3 py-2 rounded">
+                  OUT OF STOCK
+                </div>
+              {% endif %}
+
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">{{ product.name }}</h5>
+                <p class="text-muted small mb-1">{{ product.category }}</p>
+
+                <!-- Rating stars -->
+                <div class="rating mb-2">
+                  {% for i in "12345" %}
+                    {% if forloop.counter <= product.rating %}
+                      <i class="bi bi-star-fill text-warning"></i>
+                    {% else %}
+                      <i class="bi bi-star text-warning"></i>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <p class="fw-semibold text-success mb-3">€{{ product.price }}</p>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-center gap-2">
+                  <a href="#" class="btn btn-sm btn-dark add-to-cart-btn" 
+   data-product-id="{{ product.id }}" style="background-color: rgb(109, 121, 96);">
+   <i class="bi bi-cart-plus"></i> Add to Cart
+</a>
+                    {% if user.is_authenticated %}
+                      <a href="#" 
+                        class="btn btn-outline-danger btn-sm favourite-btn {% if product.id in user_favourite_ids %}active{% endif %}" 
+                          data-product-id="{{ product.id }}">
+                          <i class="bi bi-heart{% if product.id in user_favourite_ids %}-fill{% endif %}"></i>
+</a>
+
+            {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <p class="text-center text-muted">No products available at the moment.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+

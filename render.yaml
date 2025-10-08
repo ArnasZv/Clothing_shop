@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: clothing-shop
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn clothing_shop.wsgi
+    envVars:
+      - key: SECRET_KEY
+        scope: RUN_TIME
+      - key: DATABASE_URL
+        scope: RUN_TIME
+      - key: DEBUG
+        value: "False"
+        scope: RUN_TIME

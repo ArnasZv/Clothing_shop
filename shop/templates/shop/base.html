@@ -1,0 +1,72 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Clothing Shop{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'shop/css/styles.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+   <nav class="navbar navbar-expand-lg" style="width: 100%; padding: 0;">
+  <div class="container-fluid px-3" style="background-color: rgb(109, 121, 96);">
+    <!-- Brand -->
+    <a class="navbar-brand" href="{% url 'shop:main' %}">Clothify</a>
+
+    <!-- Hamburger button for small screens -->
+    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" 
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse container-fluid align-items-center" id="navbarResponsive"> 
+      <ul class="navbar-nav ms-auto align-items-center" style="font-family: fantasy; text-decoration: underline; font-size: 3vh;">
+        <li class="nav-item text-center">
+          <a class="nav-link" href="{% url 'shop:main' %}">Shop</a>
+        </li>
+
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop:favourites' %}">Favourites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop:cart' %}">Cart <span id="cart-counter">{{ request.user.cartitem_set.count }}</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop:support' %}">Support</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}{% endblock %}
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'shop/js/shop.js' %}"></script>
+  </body>
+</html>

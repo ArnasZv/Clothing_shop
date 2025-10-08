@@ -1,0 +1,62 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid py-5" style="height:auto;">
+  <h2 class="mb-4 fw-bold text-center">🛒 Your Cart</h2>
+
+  {% if items %}
+  <div class="table-responsive">
+    <table class="table align-middle table-hover">
+      <thead class="table-dark text-center">
+        <tr>
+          <th scope="col">Product</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Price</th>
+          <th scope="col">Subtotal</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="text-center">
+        {% for item in items %}
+        <tr>
+          <td class="d-flex align-items-center justify-content-start">
+            {% if item.product.image %}
+              <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
+                   class="img-thumbnail me-3" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+            {% else %}
+              <img src="{% static 'shop/images/no_image.png' %}" alt="No image"
+                   class="img-thumbnail me-3" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+            {% endif %}
+            <span class="fw-semibold">{{ item.product.name }}</span>
+          </td>
+          <td>{{ item.quantity }}</td>
+          <td>€{{ item.product.price }}</td>
+          <td>€{{ item.subtotal|floatformat:2 }}</td>
+          <td>
+            <a href="{% url 'shop:remove_from_cart' item.id %}" class="btn btn-sm btn-danger">
+              <i class="bi bi-trash"></i> Remove
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-end mt-4">
+    <h4 class="fw-bold">Total: €{{ total|floatformat:2 }}</h4>
+    <a href="{% url 'shop:checkout' %}" class="btn btn-success mt-3">
+      <i class="bi bi-credit-card"></i> Proceed to Checkout
+    </a>
+  </div>
+
+  {% else %}
+  <div class="text-center py-5">
+    <p class="fs-5 text-muted">Your cart is empty.</p>
+    <a href="{% url 'shop:main' %}" class="btn btn-primary mt-3">Continue Shopping</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

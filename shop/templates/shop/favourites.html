@@ -1,0 +1,30 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid justify-content-center align-items-center py-4 text-center" style="min-height: auto;">
+<h3>Your favourites</h3>
+<div class="row" style="height: auto;">
+  {% for fav in favs %}
+    <div class="col-md-4 mb-3" style="height: auto; width: auto;">
+      <div class="card">
+        {% if fav.product.image %}
+          <img src="{{ fav.product.image.url }}" class="card-img-top">
+        {% else %}
+          <img src="https://via.placeholder.com/400x300?text=No+Image" class="card-img-top">
+        {% endif %}
+        <div class="card-body">
+          <h5>{{ fav.product.name }}</h5>
+          <p>${{ fav.product.price }}</p>
+          <a href="#" class="btn btn-sm btn-dark add-to-cart-btn" 
+   data-product-id="{{ product.id }}" style="background-color: rgb(109, 121, 96);">
+   <i class="bi bi-cart-plus"></i> Add to Cart
+          <a href="{% url 'shop:remove_from_favourites' fav.product.id %}" class="btn btn-outline-danger btn-sm"><i class="bi bi-x"></i></a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>You have no favourites yet.</p>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}
