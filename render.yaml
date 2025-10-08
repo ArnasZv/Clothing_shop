@@ -4,8 +4,9 @@ services:
     env: python
     region: oregon
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
     startCommand: gunicorn clothing_shop.wsgi
+    staticPublishPath: staticfiles
     envVars:
       - key: SECRET_KEY
         scope: RUN_TIME

@@ -1,0 +1,217 @@
+
+ 
+
+
+
+.container,
+.row {
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+a{
+  color: black !important;
+}
+
+.navbar-brand{
+  font-family:fantasy, cursive;
+  font-size: 2.5rem;
+  color: black !important;
+  padding-left: 20px;
+}
+
+nav{
+  background-color: rgb(109, 121, 96);
+}
+
+
+.product-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit:cover;
+  height: 200px;
+  border: solid 2px grey !important;
+  border-radius: 15px 15px 15px 15px!important ;
+}
+
+.rating i {
+  font-size: 0.9rem;
+}
+
+
+
+/* Login Page */
+
+.login, .register {
+  background-color: black !important;
+}
+
+.background-image.login, .background-image.register {
+  background-image: url("/static/shop/images/pexels-bohlemedia-1884581.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height:100vh ;
+  overflow-y: hidden;
+}
+
+
+.carousel-item img {
+  height: 350px;
+  object-fit:contain;
+  border-radius: 10px;
+  justify-self: center;
+  border: solid 1px grey !important;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 50%;
+}
+
+
+.position-relative img {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.position-relative:hover img {
+  opacity: 0.9;
+}
+
+.position-absolute {
+  z-index: 5;
+  letter-spacing: 1px;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.btn-dark.added {
+  background-color: #198754 !important;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-danger.active {
+  color: #fff !important;
+  background-color: #dc3545 !important;
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+.dark-mode .card {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+.favourite-btn.active {
+  color: #fff !important;
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+.favourite-btn i.bi-heart-fill {
+  color: #fff !important;
+}
+
+.navbar {
+  background: #111;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Desktop Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #0dcaf0;
+}
+
+/* Hamburger (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* --- Mobile View --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: #111;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
