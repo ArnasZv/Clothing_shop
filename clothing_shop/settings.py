@@ -85,11 +85,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 DATABASES = {
-    "default": dj_database_url.config(
+    'default': dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
-        ssl_require=False
+        ssl_require=not os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
     )
 }
 
