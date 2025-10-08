@@ -1,6 +1,8 @@
-Admin:
-Username:ArnasZv
-Password:AT290519*
+## Admin ##
+## Username: 
+   ArnasZv
+## Password:
+   AT290519*
 
 
 #  Clothing Shop Web Application
