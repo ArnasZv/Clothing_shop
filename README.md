@@ -1,14 +1,19 @@
-# 🛍️ Clothing Shop Web Application
+Admin:
+Username:ArnasZv
+Password:AT290519*
+
+
+#  Clothing Shop Web Application
 ### Frameworks Module – College Project Submission
 
-## 📘 Overview
+##  Overview
 The **Clothing Shop Web Application** is a fully functional e-commerce platform developed using the **Django framework** with a **PostgreSQL database** (locally using SQLite for development). The system demonstrates the integration of modern web technologies, including **Bootstrap, JavaScript, and Django’s MVC architecture**, while showcasing secure user management, data storage, and hosting readiness.
 
 This project fulfills all the **Frameworks Assessment** criteria, highlighting proficiency in **Django concepts, database integration, authentication and authorization**, and **front-end responsiveness** through a well-structured, modular web application.
 
 ---
 
-## 🧩 Project Objectives
+##  Project Objectives
 1. **Demonstrate** the application of Django as a full-stack web development framework.  
 2. **Integrate** a relational database for structured data storage and management.  
 3. **Implement** authentication and authorization systems to manage user roles securely.  
@@ -17,7 +22,7 @@ This project fulfills all the **Frameworks Assessment** criteria, highlighting p
 
 ---
 
-## 🧱 Application Architecture
+##  Application Architecture
 ### **Backend Framework:** Django 5.2  
 ### **Database:** PostgreSQL (SQLite used in development)  
 ### **Frontend Technologies:** HTML5, CSS3, Bootstrap 5, JavaScript  
@@ -27,7 +32,7 @@ The application is divided into multiple Django apps, ensuring modularity and sc
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 ```
 Clothing_shop/
 │
@@ -61,44 +66,44 @@ Clothing_shop/
 
 ---
 
-## ⚙️ Core Features
-### 👤 **User Management**
+##  Core Features
+###  **User Management**
 - Registration and authentication via Django’s built-in system.  
 - Profile management with editable user information.  
 - Email-based password reset functionality (via `auth_views`).  
 - Role-based permissions (regular users vs. admin staff).  
 
-### 🛍️ **Product and Category Management**
+###  **Product and Category Management**
 - Products organized into **categories** (`Category` model).  
 - Each product includes name, slug, description, price, and inventory count.  
 - Multiple images handled through inline model relationships (`ProductImageInline`).  
 
-### 🛒 **Cart, Orders, and Checkout**
+###  **Cart, Orders, and Checkout**
 - Add/remove items from a shopping cart (`CartItem` model).  
 - Orders processed with customer details, address, payment method, and total cost.  
 - Linked `OrderItem` entries for each order line.  
 
-### 💖 **Favourites and Support**
+###  **Favourites and Support**
 - Save favourite items (`Favourite` model).  
 - Submit **Support Messages** via form; managed in admin interface.  
 
-### 💬 **Messaging and Admin Features**
+###  **Messaging and Admin Features**
 - Admin interface includes product and order management.  
 - View and manage support messages (`SupportMessageAdmin`).  
 
-### 🖥️ **User Interface and Responsiveness**
+###  **User Interface and Responsiveness**
 - Responsive Bootstrap 5 design.  
 - Shared templates for header, footer, and navigation.  
 - JavaScript for validation and dynamic UI.  
 
-### 🔐 **Security and Data Protection**
+###  **Security and Data Protection**
 - Password encryption with Django hashing.  
 - CSRF protection and session security.  
 - Role-based access and `.env` configuration.  
 
 ---
 
-## 🧮 Database Schema Overview
+##  Database Schema Overview
 | Table | Description |
 |-------|--------------|
 | `auth_user` | Default Django user table |
@@ -112,7 +117,7 @@ Clothing_shop/
 
 ---
 
-## 🧰 Technologies and Libraries
+## Technologies and Libraries
 | Category | Technology |
 |-----------|-------------|
 | Framework | Django 5.2 |
@@ -124,10 +129,10 @@ Clothing_shop/
 
 ---
 
-## 🧪 Setup and Execution Instructions
+##  Setup and Execution Instructions
 ### **1. Environment Setup**
 ```bash
-git clone https://github.com/yourusername/Clothing_shop.git
+git clone https://github.com/ArnasZv/Clothing_shop/tree/main
 cd Clothing_shop
 python -m venv venv
 source venv/bin/activate
@@ -160,7 +165,7 @@ Access locally at: **http://127.0.0.1:8000**
 
 ---
 
-## ☁️ Deployment Instructions (Render)
+## Deployment Instructions (Render)
 1. Push to GitHub.  
 2. Connect Render and create new **Web Service**.  
 3. Build Command: `pip install -r requirements.txt`  
@@ -170,7 +175,7 @@ Access locally at: **http://127.0.0.1:8000**
 
 ---
 
-## 🧠 Learning Outcomes
+##  Learning Outcomes
 - Applied key **Django concepts** (models, templates, views).  
 - Integrated **PostgreSQL database** via Django ORM.  
 - Implemented secure **authentication and authorization**.  
@@ -179,12 +184,11 @@ Access locally at: **http://127.0.0.1:8000**
 
 ---
 
-## 🎓 Author Information
-**Student Name:** [Your Name]  
+##  Student Information
+**Student Name:** [Arnas Zvirblis]  
 **Course:** Frameworks Module  
-**College:** [Your College Name]  
-**Instructor:** [Instructor’s Name]  
-**Submission Date:** October 2025  
+**College:** [UCD Academy]  
+**Submission Date:** 8 October 2025  
 
 ---
 
